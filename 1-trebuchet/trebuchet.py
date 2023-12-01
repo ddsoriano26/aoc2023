@@ -29,14 +29,10 @@ def convert_to_digits(input_string):
         "zero": 0,
         "ZERO": 0,
     }
-    new_string = input_string
-    match_object = re.search(r'(one)|(two)|(three)|(four)|(five)|(six)|(seven)|(eight)|(nine)|(zero)', new_string)
     digit_list = []
     i = 0
     while i < len(input_string):
-        match_object = re.search(r'(one)|(two)|(three)|(four)|(five)|(six)|(seven)|(eight)|(nine)|(zero)', input_string[i:])
         if input_string[i].isdigit():
-            new_string += input_string[i]
             digit_list.append(input_string[i])
         else:
             match_object = re.search(r'(one)|(two)|(three)|(four)|(five)|(six)|(seven)|(eight)|(nine)|(zero)', input_string[i:])
