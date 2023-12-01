@@ -1,0 +1,7 @@
+- Function to extract first and last digits of a string
+- Iterate over calibration array, add resulting digit
+- Replace each digit word with the corresponding number
+- Instead of replacing, go through the string per letter?
+	- If letter is digit, add to list
+	- Else, check the nearest word digit
+	- From current index to before nearest word digit, get digits
