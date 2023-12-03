@@ -1,0 +1,14 @@
+- Extract ID
+- Check if possible
+	- Get max each of
+		- Red
+		- Blue
+		- Green
+- Split per set? Or parse per word?
+- Split by color, then get the numeric number
+- New flow
+	- Split by `:`
+		- Split first item, game number is 2nd item of 1st item
+	- 2nd item:
+		- Split by `;`
+- Learning more and more about RegEx, which is nice
