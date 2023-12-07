@@ -1,0 +1,7 @@
+- Get time and distance
+- For each time and distance:
+	- Iterate through 1 to time, calculate speed?
+	- Remaining distance is race time minus time spent to hold the button times
+- Formula: `total_distance = time_i + (total_time-time_i)**`
+- Formula: `total_distance = time[i] * (total_time - time[i])`
+	- Do not include `total_time` in iteration
