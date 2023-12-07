@@ -1,10 +1,10 @@
-## Part 1
+# Part 1
 - Game plan
 	- Parse out card number, winning numbers, and own numbers
 	- Count number of matches and raise that to 2
 	- Sum total
 
-## Part 2
+# Part 2
 - Game plan
 	- Get number of matches per card
 	- Object that contains number of instances per card, initialize each with 1

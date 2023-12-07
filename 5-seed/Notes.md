@@ -1,0 +1,36 @@
+# Part 1
+- Array of dictionaries
+	- Or class?
+		- Seed
+		- Soil
+		- Fertilizer
+		- Water
+		- Light
+		- Temperature
+		- Humidity
+		- Location
+	- If that seed doesn't exist in the property, ignore/discard the info - we won't get the information anyway
+- Function
+	- Get the source property and destination property
+	- Extract destination start, source start, and range
+	- For each start, add to array of classes
+- Filter through array to find the property
+- Consider only the given seed numbers
+- Important note: Any source numbers that aren't mapped correspond to the same destination number.
+- Separate each by new line
+- If seed not found, initialize its soil with the same number
+	- Need to handle every other case like this
+- So slow, too many numbers
+	- Maybe we need a better handler/checker for if the seed number is included in the range
+
+# Part 2
+- This is still too slow even when we consider just the inputs
+- Can I minimize the input even further?
+- Minimum seed is not minimum location
+- Maybe we can get just the range of seeds?
+- Game plan
+	- For every pair of seed edges, check if lowest location is there
+	- Then, check location's seed, then the index of the seed in the seed array
+	- If the index is odd, change left index to half; if index is even, change right index to half
+	- Calculate lowest location again, and check if new lowest is lower than the current lowest
+	- If yes, continue loop; if not, we have the lowest

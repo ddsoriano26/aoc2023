@@ -125,8 +125,8 @@ def part2():
     global almanac
     almanac = []
 
-    # input_file = open("input.txt", "r")
-    input_file = open("sample.txt", "r")
+    input_file = open("input.txt", "r")
+    # input_file = open("sample.txt", "r")
     lines = input_file.readlines()
     input_arrays = organize_inputs(lines[1:])
 
@@ -136,7 +136,8 @@ def part2():
     seeds = [int(seed) for seed in seeds_strings]
     # Part 2 getting seeds
     seeds = get_seeds(seeds)
-    print(seeds)
+    print(f"Initial Seeds: {seeds}")
+    print(f"Seeds: {seeds}")
     
     lowest_location = -1
     i = 0
@@ -146,61 +147,40 @@ def part2():
         
         # Organize remaining inputs
         input_arrays = organize_inputs(lines[1:])
-        # print(input_arrays)
 
         # Add remaining properties
         for blocks in input_arrays:
             add_to_array(blocks)
-        # print(almanac)
         locations = [item.__dict__["location"] for item in almanac]
-        # for item in almanac:
-        #     print(item)
-        # print(locations)
-        # print(min(seeds))
+        
+        print(f"Locations: {locations}")
         print(f"Min: {min(locations)}")
-
-        # if min(locations) == 0:
-        #     break
-
-        if (lowest_location > 0 and lowest_location < min(locations)) or (lowest_location == 0):
+        
+        print(set(seeds))
+        if len(seeds) - len(set(seeds)) == 2:
             break
-        else:
-            # print("No")
-            # print(f"Current: {lowest_location}")
-            # print(f"Next: {min(locations)}")
-            pass
 
         match = list(filter(lambda x: x.location == min(locations), almanac))[0]
-        # print("MATCH")
-        # print(f"{match}")
         new_seeds = []
         lowest_loc_index = seeds.index(match.seed)
         print(lowest_loc_index)
         print(lowest_loc_index % 2 == 0)
         if lowest_loc_index % 2 == 0:
-            new_seeds.append(seeds[lowest_loc_index] + 1)
-            # print(seeds)
-            # print(lowest_loc_index)
-            new_seeds.append(seeds[lowest_loc_index + 1] - 1)
+            midpoint = int((seeds[lowest_loc_index] + seeds[lowest_loc_index + 1]) / 2)
+            new_locations = [locations[lowest_loc_index], locations[lowest_loc_index + 1]]
+            new_seeds = [seeds[lowest_loc_index], midpoint, midpoint + 1, seeds[lowest_loc_index + 1]]
         else:
-            # midpoint = int((seeds[lowest_loc_index - 1] + seeds[lowest_loc_index])/2)
-            # new_seeds.append(midpoint)
-            # new_seeds.append(seeds[lowest_loc_index])
-            new_seeds.append(seeds[lowest_loc_index - 1] + 1)
-            new_seeds.append(seeds[lowest_loc_index] - 1)
+            midpoint = int((seeds[lowest_loc_index - 1] + seeds[lowest_loc_index])/2)
+            new_locations = [locations[lowest_loc_index - 1], locations[lowest_loc_index]]
+            new_seeds = [seeds[lowest_loc_index - 1], midpoint, midpoint + 1, seeds[lowest_loc_index]]
+        locations = new_locations
+        
         # Refresh seeds
         seeds = new_seeds
-        # print("refreshing seeds")
-        # print(seeds)
         # Refresh almanac
         almanac = []
         lowest_location = min(locations)
-        # print(f"current lowest location: {lowest_location}")
-
-        # i += 1
-
-        # if i == 5:
-        #     break
+        print(f"New Seeds: {new_seeds}")
 
     print(f"Lowest location for Part 2: {lowest_location}")
 
@@ -237,5 +217,3 @@ if __name__ == "__main__":
     input_file.close()
     
     part2()
-    # test = Seed(1)
-    # print(test.__dict__)
