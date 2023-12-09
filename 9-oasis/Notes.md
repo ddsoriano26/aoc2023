@@ -1,0 +1,2 @@
+- Get array of differences first
+- Append the sum of last two items in the last 2 lists
